@@ -21,16 +21,15 @@ ORDER BY anio, mes, total_gastado DESC;
 -- =======================
 -- 4. Lista de pasajeros que viajan en “First Class” más de 4 veces al mes
 -- =======================
-SELECT
+SELECT 
     c.id_cliente,
     c.nombre,
-    EXTRACT(YEAR FROM v.fecha) AS anio,
+    EXTRACT(YEAR FROM v.fecha) AS año,
     EXTRACT(MONTH FROM v.fecha) AS mes,
-    COUNT(*) AS viajes_first_class
+    COUNT(*) AS cantidad_viajes_first_class
 FROM cliente_comp cc
-JOIN cliente c ON cc.id_cliente = c.id_cliente
 JOIN vuelo v ON cc.id_vuelo = v.id_vuelo
+JOIN cliente c ON cc.id_cliente = c.id_cliente
 WHERE cc.seccion = 'First Class'
-GROUP BY c.id_cliente, c.nombre, anio, mes
-HAVING COUNT(*) > 4
-ORDER BY anio, mes, viajes_first_class DESC;
+GROUP BY c.id_cliente, c.nombre, EXTRACT(YEAR FROM v.fecha), EXTRACT(MONTH FROM v.fecha)
+HAVING COUNT(*) > 4;

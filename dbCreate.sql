@@ -4,7 +4,7 @@
 -- ==========================================
 
 -- 1. Crear base de datos
-CREATE DATABASE vuelos_db;
+--CREATE DATABASE vuelos_db;
 
 
 -- ==========================================
