@@ -59,8 +59,13 @@ INSERT INTO vuelo (origen, destino, id_empleado, id_compania, id_avion, fecha) V
 ('Madrid', 'Berlin', 4, 3, 4, '2025-03-02'),
 ('Berlin', 'Paris', 4, 3, 4, '2025-03-03'),
 ('Paris', 'Berlin', 4, 3, 4, '2025-03-04'),
-('Berlin', 'Rome', 4, 3, 4, '2025-03-05');
-
+('Berlin', 'Rome', 4, 3, 4, '2025-03-05'),
+('Santiago', 'Buenos Aires', 1, 1, 1, '2021-03-10'),
+('Lima', 'Santiago', 2, 1, 2, '2021-06-15'),
+('Sao Paulo', 'Rio', 3, 2, 3, '2021-11-20'),
+('New York', 'Miami', 4, 4, 5, '2021-07-05'),
+('Tokyo', 'Osaka', 3, 2, 3, '2021-12-01'),
+('London', 'Madrid', 5, 3, 4, '2021-01-25');
 
 -- =======================
 -- Insertar clientes
@@ -97,13 +102,15 @@ INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (1, 1, 'Economy', 950),
 (1, 9, 'Business', 1500),
-(1, 6, 'First Class', 2200);
+(1, 6, 'First Class', 2200),
+(1, 16, 'Economy', 500);
 
 -- Marie (France) - Economy
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (3, 2, 'Economy', 1200),
 (3, 7, 'Economy', 1300),
-(3, 1, 'Economy', 800);
+(3, 1, 'Economy', 800),
+(3, 18, 'Economy', 800);
 
 -- Hans (Germany) - First Class más de 4 veces en un mes
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
@@ -111,7 +118,8 @@ INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (4, 8, 'First Class', 1600),
 (4, 1, 'First Class', 2000),
 (4, 6, 'First Class', 2100),
-(4, 7, 'First Class', 2300);
+(4, 7, 'First Class', 2300),
+(4, 19, 'First Class', 1500);
 
 -- Sofía (Italy) - Business normalito
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
@@ -140,11 +148,13 @@ INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 -- David (UK) - viajes variados
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (9, 1, 'Business', 1200),
-(9, 6, 'First Class', 2100);
+(9, 6, 'First Class', 2100),
+(9, 21, 'Business', 1100);
 
 -- Fatima (UAE) - gasto alto en First
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (10, 5, 'First Class', 3000),
 (10, 10, 'Business', 1500),
-(10, 7, 'First Class', 3200);
+(10, 7, 'First Class', 3200),
+(10, 20, 'Business', 1300);
 
