@@ -39,7 +39,10 @@ INSERT INTO empleado (id_compania, sueldo, cargo, fecha_contratacion) VALUES
 (1, 2000, 'Copiloto', '2019-08-15'),
 (2, 4000, 'Piloto', '2017-03-21'),
 (3, 3800, 'Piloto', '2019-01-11'),
-(4, 4200, 'Piloto', '2020-06-01');
+(4, 4100, 'Piloto', '2022-05-10'),
+(5, 3900, 'Piloto', '2023-08-15'),
+(6, 4300, 'Piloto', '2025-02-01');  
+(7, 4200, 'Piloto', '2020-06-01');
 
 -- =======================
 -- Insertar vuelos (2022-2025)
