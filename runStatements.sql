@@ -111,6 +111,66 @@ WHERE rak = 1
 ORDER BY ano, mes;
 
 -- =======================
+-- 7. Lista de compañías indicando cuál es el avión que más ha recaudado en los últimos 4 años y cuál es el monto recaudado.
+-- =======================
+WITH recaudacion_por_avion AS (
+  SELECT
+    c.id_compania,
+    c.nombre AS compania,
+    a.id_avion,
+    m.nombre AS modelo,
+    SUM(cc.costo) AS recaudado
+  FROM compania c
+  JOIN avion  a ON a.id_compania = c.id_compania
+  JOIN modelo m ON m.id_modelo  = a.id_modelo
+  JOIN vuelo  v ON v.id_avion   = a.id_avion
+               AND v.id_compania = c.id_compania
+  JOIN cliente_comp cc ON cc.id_vuelo = v.id_vuelo
+  WHERE v.fecha >= (CURRENT_DATE - INTERVAL '4 years')
+  GROUP BY c.id_compania, c.nombre, a.id_avion, m.nombre
+),
+top_avion_por_compania AS (
+  SELECT
+    recaudacion_por_avion.*,
+    ROW_NUMBER() OVER (
+      PARTITION BY id_compania
+      ORDER BY recaudado DESC, id_avion
+    ) AS rn
+  FROM recaudacion_por_avion
+)
+SELECT compania, id_avion, modelo, recaudado
+FROM top_avion_por_compania
+WHERE rn = 1
+ORDER BY compania;
+
+-- =======================
+-- 8. Lista de compañías y total de aviones por año (en los últimos 10 años).
+-- =======================
+WITH anios AS (
+  SELECT generate_series(
+    EXTRACT(YEAR FROM CURRENT_DATE)::int - 9,
+    EXTRACT(YEAR FROM CURRENT_DATE)::int
+  ) AS anio
+), conteos AS (
+  SELECT
+    a.anio,
+    c.id_compania,
+    c.nombre AS compania,
+    COUNT(av.id_avion) AS total_aviones
+  FROM anios a
+  JOIN compania c ON TRUE
+  LEFT JOIN avion av ON av.id_compania = c.id_compania
+                    AND av.anio_ingreso <= a.anio
+  GROUP BY a.anio, c.id_compania, c.nombre
+)
+SELECT
+  anio,
+  compania,
+  total_aviones
+FROM conteos
+ORDER BY compania, anio;
+
+-- =======================
 -- 9. Lista anual de compañías que en promedio han pagado más a sus empleados (últimos 10 años)
 -- =======================
 WITH promedios AS (

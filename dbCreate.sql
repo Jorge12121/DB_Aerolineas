@@ -77,3 +77,4 @@ CREATE INDEX idx_cliente_nacionalidad ON cliente(nacionalidad);
 CREATE INDEX idx_vuelo_fecha ON vuelo(fecha);
 CREATE INDEX idx_clientecomp_seccion ON cliente_comp(seccion);
 CREATE INDEX idx_empleado_cargo ON empleado(cargo);
+CREATE INDEX idx_avion_compania_anio ON avion(id_compania, anio_ingreso);
