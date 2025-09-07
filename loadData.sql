@@ -4,13 +4,25 @@
 -- ==========================================
 
 -- =======================
+-- Limpiar tablas antes de insertar datos
+-- =======================
+BEGIN;
+TRUNCATE TABLE
+  cliente_comp, vuelo, empleado, avion, cliente, modelo, compania
+RESTART IDENTITY CASCADE;
+COMMIT;
+
+-- =======================
 -- Insertar compañías
 -- =======================
 INSERT INTO compania (nombre) VALUES
 ('AeroChile'),
 ('SkyEurope'),
 ('GlobalWings'),
-('PacificAir');
+('PacificAir'),
+('TransWorld'),
+('FlyHigh'),
+('AirNova');
 
 -- =======================
 -- Insertar modelos de aviones
@@ -29,7 +41,14 @@ INSERT INTO avion (id_modelo, id_compania, anio_ingreso) VALUES
 (2, 1, 2018),
 (3, 2, 2020),
 (4, 3, 2021),
-(1, 4, 2017);
+(1, 4, 2017),
+(2, 5, 2019),
+(3, 6, 2022),
+(4, 7, 2023),
+(1, 3, 2016),
+(2, 4, 2018),
+(3, 5, 2020),
+(4, 6, 2021);
 
 -- =======================
 -- Insertar empleados (pilotos principalmente)
@@ -41,33 +60,33 @@ INSERT INTO empleado (id_compania, sueldo, cargo, fecha_contratacion) VALUES
 (3, 3800, 'Piloto', '2019-01-11'),
 (4, 4100, 'Piloto', '2022-05-10'),
 (5, 3900, 'Piloto', '2023-08-15'),
-(6, 4300, 'Piloto', '2025-02-01');  
+(6, 4300, 'Piloto', '2025-02-01'),
 (7, 4200, 'Piloto', '2020-06-01');
 
 -- =======================
 -- Insertar vuelos (2022-2025)
 -- =======================
 INSERT INTO vuelo (origen, destino, id_empleado, id_compania, id_avion, fecha) VALUES
-('Santiago', 'Madrid', 1, 1, 1, '2022-02-10'),
-('Paris', 'Tokyo', 3, 2, 3, '2022-02-15'),
-('Berlin', 'Rome', 4, 3, 4, '2022-02-20'),
-('New York', 'London', 5, 4, 5, '2022-02-11'),
-('Dubai', 'Sydney', 3, 2, 3, '2022-02-25'),
-('London', 'New York', 1, 1, 2, '2024-05-30'),
-('Tokyo', 'Paris', 4, 3, 4, '2025-02-19'),
-('Rome', 'Berlin', 5, 4, 5, '2025-03-22'),
-('Madrid', 'Santiago', 1, 1, 1, '2025-04-18'),
-('Sydney', 'Dubai', 3, 2, 3, '2025-06-12'),
-('Berlin', 'Madrid', 4, 3, 4, '2025-03-01'),
-('Madrid', 'Berlin', 4, 3, 4, '2025-03-02'),
-('Berlin', 'Paris', 4, 3, 4, '2025-03-03'),
-('Paris', 'Berlin', 4, 3, 4, '2025-03-04'),
-('Berlin', 'Rome', 4, 3, 4, '2025-03-05'),
+('Santiago', 'Madrid', 1, 1, 1, '2022-02-10'),--#7150
+('Paris', 'Tokyo', 3, 2, 3, '2022-02-15'),--
+('Berlin', 'Rome', 4, 3, 4, '2022-02-20'),--
+('New York', 'London', 5, 4, 5, '2022-02-11'),--
+('Dubai', 'Sydney', 3, 2, 3, '2022-02-25'),--
+('London', 'New York', 1, 1, 2, '2024-05-30'),--#8400
+('Tokyo', 'Paris', 4, 3, 4, '2025-02-19'),--
+('Rome', 'Berlin', 5, 4, 5, '2025-03-22'),--
+('Madrid', 'Santiago', 1, 1, 1, '2025-04-18'),--#3700
+('Sydney', 'Dubai', 3, 2, 3, '2025-06-12'),--
+('Berlin', 'Madrid', 4, 3, 4, '2025-03-01'),--
+('Madrid', 'Berlin', 4, 3, 4, '2025-03-02'),--
+('Berlin', 'Paris', 4, 3, 4, '2025-03-03'),--
+('Paris', 'Berlin', 4, 3, 4, '2025-03-04'),--
+('Berlin', 'Rome', 4, 3, 4, '2025-03-05'),--
 ('Santiago', 'Buenos Aires', 1, 1, 1, '2021-03-10'),
 ('Lima', 'Santiago', 2, 1, 2, '2021-06-15'),
-('Sao Paulo', 'Rio', 3, 2, 3, '2021-11-20'),
+('Sao Paulo', 'Rio', 3, 2, 3, '2021-11-20'),--
 ('New York', 'Miami', 4, 4, 5, '2021-07-05'),
-('Tokyo', 'Osaka', 3, 2, 3, '2021-12-01'),
+('Tokyo', 'Osaka', 3, 2, 3, '2021-12-01'),--
 ('London', 'Madrid', 5, 3, 4, '2021-01-25');
 
 -- =======================
@@ -160,4 +179,3 @@ INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (10, 10, 'Business', 1500),
 (10, 7, 'First Class', 3200),
 (10, 20, 'Business', 1300);
-
