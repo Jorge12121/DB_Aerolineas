@@ -62,6 +62,55 @@ GROUP BY c.id_cliente, c.nombre, EXTRACT(YEAR FROM v.fecha), EXTRACT(MONTH FROM 
 HAVING COUNT(*) > 4;
 
 -- =======================
+-- 5. Avión con menos vuelos 
+-- =======================
+SELECT
+	id_avion,
+	cantidad_viajes
+FROM(
+	SELECT v.id_avion,
+	COUNT(*) AS cantidad_viajes
+	FROM vuelo v
+	GROUP BY v.id_avion
+) AS vuelos_por_avion
+ORDER BY cantidad_viajes ASC
+LIMIT 1;
+
+-- =======================
+-- 6. Lista mensual de pilotos con mayor sueldo (durante los últimos 4 años)
+-- =======================
+WITH meses AS (
+  SELECT generate_series(
+    date_trunc('month', CURRENT_DATE - INTERVAL '4 years'),
+    date_trunc('month', CURRENT_DATE),
+    interval '1 month'
+  )::date AS mes
+),
+candidatos AS (
+  SELECT m.mes, e.id_empleado, e.sueldo
+  FROM meses m
+  JOIN empleado e
+    ON e.cargo = 'Piloto'
+   AND e.fecha_contratacion <= m.mes
+),
+ranked AS (
+  SELECT
+    mes,
+    id_empleado,
+    sueldo,
+    RANK() OVER (PARTITION BY mes ORDER BY sueldo DESC) AS rak
+  FROM candidatos
+)
+SELECT
+  EXTRACT(YEAR FROM mes) AS ano,
+  EXTRACT(MONTH FROM mes) AS mes,
+  id_empleado,
+  sueldo
+FROM ranked
+WHERE rak = 1
+ORDER BY ano, mes;
+
+-- =======================
 -- 9. Lista anual de compañías que en promedio han pagado más a sus empleados (últimos 10 años)
 -- =======================
 WITH promedios AS (
