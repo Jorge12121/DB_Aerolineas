@@ -1,6 +1,6 @@
 -- ==========================================
 -- Script: loadData.sql
--- Descripción: Inserción de datos iniciales
+-- Descripcion: Insercion de datos iniciales
 -- ==========================================
 
 -- =======================
@@ -13,7 +13,7 @@ RESTART IDENTITY CASCADE;
 COMMIT;
 
 -- =======================
--- Insertar compañías
+-- Insertar compañias
 -- =======================
 INSERT INTO compania (nombre) VALUES
 ('AeroChile'),
@@ -93,7 +93,7 @@ INSERT INTO vuelo (origen, destino, id_empleado, id_compania, id_avion, fecha) V
 -- Insertar clientes
 -- =======================
 INSERT INTO cliente (nacionalidad, nombre, edad, id_compania) VALUES
-('Chile', 'Carlos Pérez', 34, 1),
+('Chile', 'Carlos Perez', 34, 1),
 ('USA', 'Alice Johnson', 40, 2),
 ('France', 'Marie Dupont', 29, 2),
 ('Germany', 'Hans Muller', 45, 3),
@@ -103,9 +103,9 @@ INSERT INTO cliente (nacionalidad, nombre, edad, id_compania) VALUES
 ('Brazil', 'Ana Silva', 33, 1),
 ('UK', 'David Smith', 42, 4),
 ('UAE', 'Fatima Khan', 36, 4),
-('Argentine', 'Juan Gómez', 38, 1),
-('Argentine', 'Lucía Fernández', 27, 2),
-('Argentine', 'Martín Rossi', 45, 3);
+('Argentine', 'Juan Gomez', 38, 1),
+('Argentine', 'Lucia Fernandez', 27, 2),
+('Argentine', 'Martin Rossi', 45, 3);
 
 -- =======================
 -- Insertar compras/viajes (cliente_comp)
@@ -137,7 +137,7 @@ INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (3, 1, 'Economy', 800),
 (3, 18, 'Economy', 800);
 
--- Hans (Germany) - First Class más de 4 veces en un mes
+-- Hans (Germany) - First Class mas de 4 veces en un mes
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (4, 3, 'First Class', 1500),
 (4, 8, 'First Class', 1600),
@@ -146,7 +146,7 @@ INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (4, 7, 'First Class', 2300),
 (4, 19, 'First Class', 1500);
 
--- Sofía (Italy) - Business normalito
+-- Sofia (Italy) - Business normalito
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (5, 3, 'Business', 600),
 (5, 8, 'Business', 650);
@@ -184,18 +184,18 @@ INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (10, 20, 'Business', 1300);
 
 
--- Juan Gómez 
+-- Juan Gomez 
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (11, 1, 'Economy', 900),
 (11, 6, 'Business', 1800),
 (11, 9, 'First Class', 2500);
 
--- Lucía Fernández 
+-- Lucia Fernandez 
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (12, 2, 'Economy', 950),
 (12, 7, 'Business', 1700);
 
--- Martín Rossi 
+-- Martin Rossi 
 INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (13, 3, 'First Class', 2600),
 (13, 8, 'Business', 1600),
