@@ -3,12 +3,8 @@
 -- Descripción: Creación de base de datos para gestión de vuelos
 -- ==========================================
 
--- 1. Crear base de datos
---CREATE DATABASE vuelos_db;
-
-
 -- ==========================================
--- 2. Creación de tablas
+-- 1. Creación de tablas
 -- ==========================================
 
 -- Tabla Compañía
@@ -71,7 +67,7 @@ CREATE TABLE cliente_comp (
 );
 
 -- ==========================================
--- 3. Índices adicionales (para optimizar consultas)
+-- 2. Índices adicionales (para optimizar consultas)
 -- ==========================================
 CREATE INDEX idx_cliente_nacionalidad ON cliente(nacionalidad);
 CREATE INDEX idx_vuelo_fecha ON vuelo(fecha);
