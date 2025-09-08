@@ -26,7 +26,7 @@ SELECT
     COUNT(*) AS cantidad_compras
 FROM cliente c
 JOIN cliente_comp cc ON c.id_cliente = cc.id_cliente
-WHERE c.nacionalidad = 'Argentina'
+WHERE c.nacionalidad = 'Argentine'
 GROUP BY cc.seccion
 ORDER BY cantidad_compras DESC;
 

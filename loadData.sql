@@ -96,13 +96,16 @@ INSERT INTO cliente (nacionalidad, nombre, edad, id_compania) VALUES
 ('Chile', 'Carlos Pérez', 34, 1),
 ('USA', 'Alice Johnson', 40, 2),
 ('France', 'Marie Dupont', 29, 2),
-('Germany', 'Hans Müller', 45, 3),
+('Germany', 'Hans Muller', 45, 3),
 ('Italy', 'Sofia Rossi', 31, 3),
 ('Japan', 'Akira Tanaka', 37, 2),
 ('China', 'Li Wei', 28, 3),
 ('Brazil', 'Ana Silva', 33, 1),
 ('UK', 'David Smith', 42, 4),
-('UAE', 'Fatima Khan', 36, 4);
+('UAE', 'Fatima Khan', 36, 4),
+('Argentine', 'Juan Gómez', 38, 1),
+('Argentine', 'Lucía Fernández', 27, 2),
+('Argentine', 'Martín Rossi', 45, 3);
 
 -- =======================
 -- Insertar compras/viajes (cliente_comp)
@@ -179,3 +182,21 @@ INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
 (10, 10, 'Business', 1500),
 (10, 7, 'First Class', 3200),
 (10, 20, 'Business', 1300);
+
+
+-- Juan Gómez 
+INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
+(11, 1, 'Economy', 900),
+(11, 6, 'Business', 1800),
+(11, 9, 'First Class', 2500);
+
+-- Lucía Fernández 
+INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
+(12, 2, 'Economy', 950),
+(12, 7, 'Business', 1700);
+
+-- Martín Rossi 
+INSERT INTO cliente_comp (id_cliente, id_vuelo, seccion, costo) VALUES
+(13, 3, 'First Class', 2600),
+(13, 8, 'Business', 1600),
+(13, 10, 'Economy', 1000);
