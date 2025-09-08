@@ -42,4 +42,5 @@ psql -U postgres -d vuelos_db -f "c:\Users\Nelson\Desktop\DB_Aerolineas\runState
 - `loadData.sql`: Script para cargar datos de prueba.
 - `runStatements.sql`: Consultas estadísticas y reportes.
 - `Diccionario de datos.docx`: Descripción de las tablas y campos.
-- `tablas.pdf`: Visualizacion de la estructura de las tablas
+- `tablas.pdf`: Visualizacion de la estructura de las tablas.
+- `DBA.png`: Diagrama de base de datos.
